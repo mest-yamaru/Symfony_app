@@ -2,36 +2,24 @@
 
 namespace App\Controller;
 
+use App\Entity\Person;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HelloController extends AbstractController
 {
     /**
-     * @Route("/hello/{msg}", name="hello")
+     * @Route("/hello", name="hello")
      */
-    public function index($msg="Hello!")
+    public function index(Request $request)
     {
+        $repository = $this->getDoctrine()->getRepository(Person::class);
+        $data = $repository->findall();
         return $this->render('hello/index.html.twig', [
-            'controller' => 'HelloController',
-            'action' => 'index',
-            'prev_action' => '(none)',
-            'message' => $msg,
+            'title' => 'Hello',
+            'data' => $data,
         ]);
     }
-
-    /**
-     * @Rout("/other/{action}/{msg}", name="other")
-     */
-    public function other($action, $msg)
-    {
-        return $this->render('hello/index.html.twig', [
-            'controller' => 'HelloController',
-            'action' => 'other',
-            'prev_action' => $action,
-            'message' => $msg,
-        ]);
-    }
-
 }
