@@ -41,7 +41,7 @@ class HelloController extends AbstractController
     /**
      * @Route("/create", name="create")
      */
-    public function create(Request $request, Person $person)
+    public function create(Request $request)
     {
         $person = new Person();
         $form = $this->createFormBuilder($person)
