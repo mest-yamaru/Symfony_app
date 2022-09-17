@@ -93,6 +93,34 @@ class HelloController extends AbstractController
             ]);
         }
     }
+
+    /**
+     * @Route("/delete/{id}", name="delete")
+     */
+    public function delete(Request $request, Person $person)
+    {
+        $form = $this->createFormBuilder($person)
+            ->add('name', TextType::class)
+            ->add('mail', TextType::class)
+            ->add('age', IntegerType::class)
+            ->add('save', SubmitType::class, array('label' => 'Click'))
+            ->getForm();
+
+        if ($request->getMethod() == 'POST') {
+            $form->handleRequest($request); //リクエスト情報をもとにFormをハンドリング
+            $person = $form->getData(); //Personインスタンスの取得
+            $manager = $this->getDoctrine()->getManager(); //マネージャーの取得
+            $manager->remove($person); //Personインスタンスを取り除く
+            $manager->flush(); //確定
+            return $this->redirect('/hello');
+        } else {
+            return $this->render('hello/create.html.twig', [
+                'title' => 'Hello',
+                'message' => 'Delete Entity id=' . $person->getId(),
+                'form' => $form->createView(),
+            ]);
+        }
+    }
 }
 
 class FindForm
