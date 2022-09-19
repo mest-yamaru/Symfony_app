@@ -44,7 +44,7 @@ class PersonRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('p')
             ->where('p.name = ?1')
             ->setParameter(1, $value)
-            ->getQuery()
+            ->getQuery() // Queryインスタンスを取得
             ->getResult();
     }
 
