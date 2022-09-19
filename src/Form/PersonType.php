@@ -1,4 +1,4 @@
-<php?
+<?php
 namespace App\Form;
 
 use App\Entity\Person;
