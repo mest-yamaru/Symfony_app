@@ -17,7 +17,7 @@ class PersonType extends AbstractType
         $builder
             ->add('name', TextType::class, array('required' => false))
             ->add('mail', TextType::class, array('required' => false))
-            ->add('age', TextType::class, array('required' => false))
+            ->add('age', IntegerType::class, array('required' => false))
             ->add('save', SubmitType::class, array('label' => 'Click'));
     }
 
