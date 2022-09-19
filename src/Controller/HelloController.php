@@ -44,7 +44,7 @@ class HelloController extends AbstractController
             $form->handleRequest($request);
             $findstr = $form->getData()->getFind();
             $repository = $this->getDoctrine()->getRepository(Person::class);
-            $result = $repository->findByName($findstr); // ●
+            $result = $repository->findByAge($findstr); // ●
         } else {
             $result = null;
         }
