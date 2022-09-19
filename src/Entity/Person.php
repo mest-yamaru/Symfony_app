@@ -20,21 +20,21 @@ class Person
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="必ず値を入力してください。")
      */
     private $name;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      * @Assert\Type(type="integer")
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="必ず値を入力してください。")
      */
     private $age;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\Email()
-     * @Assert\NotBlank()
+     * @Assert\Email(message="メールアドレスを入力してください。")
+     * @Assert\NotBlank(message="必ず値を入力してください。")
      */
     private $mail;
 
