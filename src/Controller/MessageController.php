@@ -23,12 +23,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 class MessageController extends AbstractController
 {
     /**
-     * @Route("/message", name="app_message")
+     * @Route("/message", name="message")
      */
-    public function index(): Response
+    public function index()
     {
         $repository = $this->getDoctrine()->getRepository(Message::class);
-        $data = $repository->findAll();
+        $data = $repository->findall();
         return $this->render('message/index.html.twig', [
             'title' => 'Message',
             'data' => $data,
