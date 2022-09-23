@@ -36,7 +36,7 @@ class MessageController extends AbstractController
     }
 
     /**
-     * @Route("/message/cerate", name="message/create")
+     * @Route("/message/create", name="message/create")
      */
     public function create(Request $request, ValidatorInterface $validator)
     {
@@ -46,7 +46,9 @@ class MessageController extends AbstractController
 
         if ($request->getMethod() == 'POST') {
             $message = $form->getData();
+
             $errors = $validator->validate($message);
+
             if(count($errors) == 0) {
                 $manager = $this->getDoctrine()->getManager();
                 $manager->persist($message);
@@ -54,14 +56,19 @@ class MessageController extends AbstractController
                 return $this->redirect('/message');
             } else {
                 $msg = "oh...can't posted...";
+                return $this->render('message/create.html.twig', [
+                    'title' => 'Message',
+                    'message' => $msg,
+                    'form' => $form->createView(),
+                ]);
             }
         } else {
             $msg = "type your message!";
+            return $this->render('message/create.html.twig', [
+                'title' => 'Message',
+                'message' => $msg,
+                'form' => $form->createView(),
+            ]);
         }
-        return $this->render('message/create.html.twig', [
-            'title' => 'Hello',
-            'message' => $msg,
-            'form' => $form->createView(),
-        ]);
     }
 }
