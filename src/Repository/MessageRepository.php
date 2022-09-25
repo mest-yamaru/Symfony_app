@@ -53,7 +53,7 @@ class MessageRepository extends ServiceEntityRepository
 
         $paginator = $this->paginate($query, $currentPage, $limit);
 
-        return$paginator;
+        return $paginator;
     }
 
     public function paginate($dql, $page = 1, $limit = 5)
