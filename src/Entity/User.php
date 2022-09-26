@@ -5,6 +5,7 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -12,7 +13,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity("username")
  */
-class User implements UserInterface, \Serializable
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     /**
      * @ORM\Id
@@ -131,6 +132,11 @@ class User implements UserInterface, \Serializable
             $this->password,
             $this->isActive,
         ) = unserialize($serialized, array('allowed_classes' => false));
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
     }
 
 }
