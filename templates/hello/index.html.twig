@@ -4,26 +4,19 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block body %}
-<h2>Person table</h2>
+<h2>{{message}}</h2>
 <table>
 <tr>
-    <th>Id</th>
-    <th>Name</th>
-    <th>Mail</th>
-    <th>Age</th>
+    <th>ID</th><td>{{user.id}}</td>
 </tr>
-{%  for item in data %}
 <tr>
-    <td>{{item.id}}</td>
-    <td>{{item.name}}</td>
-    <td>{{item.mail}}</td>
-    <td>{{item.age}}</td>
-    <td><ul>
-    {% for msg in item.messages %}
-    <li>{{ msg.content }}</li>
-    {% endfor %}
-    </ul></td>
+    <th>Name</th><td>{{user.username}}</td>
 </tr>
-{% endfor %}
+<tr>
+    <th>Mail</th><td>{{user.email}}</td>
+</tr>
+<tr>
+    <th>Role</th><td>{{user.roles[0]}}</td>
+</tr>
 </table>
 {% endblock %}

@@ -15,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use App\Form\PersonType;
 use Symfony\Component\Security\Core\Encoder\UsePasswordEncoderInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class HelloController extends AbstractController
 {
@@ -23,11 +24,14 @@ class HelloController extends AbstractController
      */
     public function index(Request $request)
     {
-        $repository = $this->getDoctrine()->getRepository(Person::class);
-        $data = $repository->findall();
+        if (!$this->getUser()->isActive()) {
+            throw new AccessDeniedException('Unable to access!');
+        }
+
         return $this->render('hello/index.html.twig', [
             'title' => 'Hello',
-            'data' => $data,
+            'message' => 'User Information',
+            'user' => $this->getUser(),
         ]);
     }
 
