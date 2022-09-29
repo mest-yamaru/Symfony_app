@@ -1,0 +1,87 @@
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/custom.scss ***!
+  \************************************************************************************************************************************************************************************************************/
+
+  @charset "UTF-8";
+  /*
+  Bootstrap の変数を以下で上書きして Bootstrap のスタイルを調整
+  Bootstrap の変数は node_modules/bootstrap/scss/_variables.scss を参照
+  */
+  /* Bootstrap の読み込み */
+  /*!
+   * Bootstrap v5.1.3 (https://getbootstrap.com/)
+   * Copyright 2011-2021 The Bootstrap Authors
+   * Copyright 2011-2021 Twitter, Inc.
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   */
+  :root {
+    --bs-blue: #0d6efd;
+    --bs-indigo: #6610f2;
+    --bs-purple: #6f42c1;
+    --bs-pink: #d63384;
+    --bs-red: #dc3545;
+    
+    ・・・中略・・・
+   
+    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+    --bs-body-font-family: ヒラギノ角ゴ ProN W3, Hiragino Kaku Gothic ProN, Meiryo, メイリオ, Verdana, Arial, sans-serif;
+    --bs-body-font-size: 1rem;
+    --bs-body-font-weight: 400;
+    --bs-body-line-height: 1.5;
+    --bs-body-color: #777;
+    --bs-body-bg: #fefefe;
+  }
+   
+  ・・・中略・・・
+   
+  body {
+    margin: 0;
+    font-family: ヒラギノ角ゴ ProN W3, Hiragino Kaku Gothic ProN, Meiryo, メイリオ, Verdana, Arial, sans-serif;
+    font-family: var(--bs-body-font-family);
+    font-size: 1rem;
+    font-size: var(--bs-body-font-size);
+    font-weight: 400;
+    font-weight: var(--bs-body-font-weight);
+    line-height: 1.5;
+    line-height: var(--bs-body-line-height);
+    color: #777;
+    color: var(--bs-body-color);
+    text-align: var(--bs-body-text-align);
+    background-color: #fefefe;
+    background-color: var(--bs-body-bg);
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+   
+  ・・・中略・・・
+   
+  abbr[title],
+  abbr[data-bs-original-title] {
+    -webkit-text-decoration: underline dotted;
+            text-decoration: underline dotted;
+    cursor: help;
+    -webkit-text-decoration-skip-ink: none;
+            text-decoration-skip-ink: none;
+  }
+   
+  ・・・中略・・・
+   
+  /* 以下は Bootstrap のスタイルとは関係ないスタイル */
+  #carouselExampleControls {
+    max-width: 600px;
+  }
+   
+  p.bg-img {
+    color: lightblue;
+    background-image: url(images/sample.jpg);
+    height: 300px;
+    line-height: 300px;
+    text-align: center;
+    max-width: 600px;
+  }
+   
+   
+  /*# sourceMappingURL=style.css.map*/
+.container {
+  background-color: #0d6efd;
+}

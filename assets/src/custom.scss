@@ -1,0 +1,38 @@
+/*
+Bootstrap の変数を以下で上書きして Bootstrap のスタイルを調整
+Bootstrap の変数は node_modules/bootstrap/scss/_variables.scss を参照
+*/
+ 
+// body の背景色と文字色を上書き
+$body-bg: #fefefe;
+$body-color: #777;
+ 
+//フォントを変更
+$font-family-base: "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", Meiryo, メイリオ, Verdana, Arial, sans-serif;
+ 
+//角丸設定を上書き
+$enable-rounded: false;
+ 
+//$theme-colors の $light を上書き
+$light: #ccc;
+ 
+/* Bootstrap の読み込み */
+@import "~bootstrap/scss/bootstrap.scss";
+ 
+/* 以下は Bootstrap のスタイルとは関係ないスタイル */
+ 
+#carouselExampleControls {
+  max-width: 600px;
+}
+ 
+$p_color: lightblue;
+ 
+p.bg-img {
+  color: $p_color;
+  /* 背景画像を指定（Asset Modules の設定により画像は dist/images にコピーされる） */
+  background-image: url("./images/sample.jpg");
+  height: 300px;
+  line-height: 300px;
+  text-align: center;
+  max-width: 600px;
+}
