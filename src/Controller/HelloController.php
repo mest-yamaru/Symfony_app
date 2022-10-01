@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Person;
+use App\Service\MyService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,18 +23,27 @@ class HelloController extends AbstractController
     /**
      * @Route("/hello", name="hello")
      */
-    public function index(Request $request)
+    public function index(Request $request, MyService $service)
     {
-        if (!$this->getUser()->isActive()) {
-            throw new AccessDeniedException('Unable to access!');
-        }
-
         return $this->render('hello/index.html.twig', [
             'title' => 'Hello',
-            'message' => 'User Information',
+            'message' => $service->getMessage(),
             'user' => $this->getUser(),
         ]);
     }
+
+    // public function index(Request $request)
+    // {
+    //     if (!$this->getUser()->isActive()) {
+    //         throw new AccessDeniedException('Unable to access!');
+    //     }
+
+    //     return $this->render('hello/index.html.twig', [
+    //         'title' => 'Hello',
+    //         'message' => 'User Information',
+    //         'user' => $this->getUser(),
+    //     ]);
+    // }
 
     /**
      * @Route("/find", name="find")
