@@ -21,13 +21,15 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 class HelloController extends AbstractController
 {
     /**
-     * @Route("/hello", name="hello")
+     * @Route("/hello/{id}", name="hello")
      */
-    public function index(Request $request, MyService $service)
+    public function index(Request $request, int $id=1, MyService $service)
     {
+        $person = $service->getPerson($id);
+        $msg = $person == null ? 'no person.' : 'name: ' . $person;
         return $this->render('hello/index.html.twig', [
             'title' => 'Hello',
-            'message' => $service->getMessage(),
+            'message' => $msg,
             'user' => $this->getUser(),
         ]);
     }
