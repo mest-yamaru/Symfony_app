@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MessageRepository;
+use App\Validator\Constraints as MyAssert;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -24,6 +26,7 @@ class Message
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @MyAssert\NeverUpper
      */
     private $content;
 
